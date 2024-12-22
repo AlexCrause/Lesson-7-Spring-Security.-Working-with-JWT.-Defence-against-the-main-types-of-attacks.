@@ -3,6 +3,7 @@ package com.example.home_work.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -53,8 +54,7 @@ public class SecurityConfig {
                         .permitAll()
                         .successHandler(successHandler)
                 )
-                .logout(logout -> logout
-                        .permitAll()
+                .logout(LogoutConfigurer::permitAll
                 )
                 .exceptionHandling(ex -> ex
                         .accessDeniedPage("/login")
